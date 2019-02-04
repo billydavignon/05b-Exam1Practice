@@ -28,6 +28,7 @@ Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
 
 import testing_helper
 import time
+import math
 
 
 def main():
@@ -106,7 +107,7 @@ def sum_of_digits(number):
 def run_test_problem1a():
     """ Tests the   problem1a   function. """
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement this TEST function.
+    # Done: 3. Implement this TEST function.
     #   It TESTS the  problem1a  function defined below.
     #   Include at least **   4   ** tests (we wrote two for you).
     # -------------------------------------------------------------------------
@@ -135,6 +136,20 @@ def run_test_problem1a():
     print_expected_result_of_test([30, 100], expected, test_results,
                                   format_string)
     actual = problem1a(30, 100)
+    print_actual_result_of_test(expected, actual, test_results, precision=3)
+
+    # Test 3:
+    expected = 1.459  # This is APPROXIMATELY the correct answer.
+    print_expected_result_of_test([0, 11], expected, test_results,
+                                  format_string)
+    actual = problem1a(0, 11)
+    print_actual_result_of_test(expected, actual, test_results, precision=3)
+
+    # Test 4:
+    expected = -.507  # This is APPROXIMATELY the correct answer.
+    print_expected_result_of_test([10, 12], expected, test_results,
+                                  format_string)
+    actual = problem1a(10, 12)
     print_actual_result_of_test(expected, actual, test_results, precision=3)
 
     print_summary_of_test_results(test_results)
@@ -168,10 +183,12 @@ def problem1a(m, n):
       -- If m is 30 and n is 100, the correct answer is about 1.278.
     """
     total = 0
-    for k in range(m, n):
-        
+    for k in range(m ** 2, n ** 2 + 1):
+        total = total + math.sin(k)
+    return total
+
     # -------------------------------------------------------------------------
-    # TODO: 4. Implement and test this function.
+    # Done: 4. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # -------------------------------------------------------------------------
     # -------------------------------------------------------------------------
@@ -184,7 +201,7 @@ def problem1a(m, n):
 def run_test_problem1b():
     """ Tests the   problem1b   function. """
     # -------------------------------------------------------------------------
-    # TODO: 5. Implement this TEST function.
+    # Done: 5. Implement this TEST function.
     #   It TESTS the  problem1b  function defined below.
     #   Include at least **   4   ** tests.  Use the usual form:
     #
@@ -202,6 +219,37 @@ def run_test_problem1b():
     print('Testing the   problem1b   function:')
     print('--------------------------------------------------')
 
+    format_string = '    problem1b( {}, {} )'
+    test_results = [0, 0]  # Number of tests passed, failed.
+
+    # Test 1:
+    expected = 5  # This is APPROXIMATELY the correct answer.
+    print_expected_result_of_test([3, 5], expected, test_results,
+                                  format_string)
+    actual = problem1b(3, 5)
+    print_actual_result_of_test(expected, actual, test_results, precision=3)
+
+    # Test 2:
+    expected = 7  # This is APPROXIMATELY the correct answer.
+    print_expected_result_of_test([5, 5], expected, test_results,
+                                  format_string)
+    actual = problem1b(5, 5)
+    print_actual_result_of_test(expected, actual, test_results, precision=3)
+
+    # Test 1:
+    expected = 9  # This is APPROXIMATELY the correct answer.
+    print_expected_result_of_test([3, 10], expected, test_results,
+                                  format_string)
+    actual = problem1b(3, 10)
+    print_actual_result_of_test(expected, actual, test_results, precision=3)
+    print_summary_of_test_results(test_results)
+
+    # Test 1:
+    expected =  8 # This is APPROXIMATELY the correct answer.
+    print_expected_result_of_test([2, 10], expected, test_results,
+                                  format_string)
+    actual = problem1b(2, 10)
+    print_actual_result_of_test(expected, actual, test_results, precision=3)
 
 def problem1b(m, f):
     """
@@ -219,8 +267,13 @@ def problem1b(m, f):
       -- If m is 5 and f is 40, the correct answer is 44,
            since there are 44 primes between 5 and 200.
      """
+    count = 0
+    for k in range(m, f * m + 1):
+        if is_prime(k) == True:
+            count = count + 1
+    return count
     # -------------------------------------------------------------------------
-    # TODO: 6. Implement and test this function.
+    # Done: 6. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #
     ###########################################################################
