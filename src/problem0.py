@@ -297,12 +297,12 @@ def run_test_problem0c():
 
     circle1 = rg.Circle(rg.Point(100, 50), 30)
     circle1.fill_color = 'blue'
-    problem0c(circle1, 6, window1)
+    problem0c(circle1, 6, window1, 'blue')
     window1.continue_on_mouse_click()
 
     circle2 = rg.Circle(rg.Point(75, 200), 75)
     circle2.fill_color = 'green'
-    problem0c(circle2, 3, window1)
+    problem0c(circle2, 3, window1, 'green')
     window1.close_on_mouse_click()
 
     # A third test on ANOTHER window.
@@ -311,11 +311,11 @@ def run_test_problem0c():
 
     circle3 = rg.Circle(rg.Point(50, 50), 20)
     circle3.fill_color = 'red'
-    problem0c(circle3, 10, window2)
+    problem0c(circle3, 10, window2, 'red')
     window2.close_on_mouse_click()
 
 
-def problem0c(circle, n, window):
+def problem0c(circle, n, window, color):
     """
     See   problem0c_picture.pdf   in this project for pictures
     that may help you better understand the following specification:
@@ -340,6 +340,7 @@ def problem0c(circle, n, window):
     """
     for k in range(n):
         circle = rg.Circle(rg.Point(circle.center.x + 2 * circle.radius, circle.center.y), circle.radius)
+        circle.fill_color = color
         circle.attach_to(window)
     window.render(0.5)
     # -----------------------------------------------------------------
