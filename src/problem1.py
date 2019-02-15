@@ -367,7 +367,7 @@ def problem1c(n):
            because the primes less than or equal to 25
            are 2, 3, 5, 7, 11, 13, 17, 19, and 23,
            and the product of those numbers is 223092870,
-           and the sum of the digits in 223092870 is 33.
+           and the sum of the digits in 223092870 is 33. 
     """
     total = 0
     for k in range(n):
