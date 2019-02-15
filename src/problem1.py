@@ -369,6 +369,12 @@ def problem1c(n):
            and the product of those numbers is 223092870,
            and the sum of the digits in 223092870 is 33.
     """
+    total = 0
+    for k in range(n):
+        if is_prime(k) == True:
+            total = k * total
+            sum_of_digits(total)
+    return total
     # -------------------------------------------------------------------------
     # Done: 7. Implement and test this function.
     #          Tests have been written for you (above).
